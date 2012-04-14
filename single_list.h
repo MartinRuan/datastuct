@@ -14,11 +14,14 @@ typedef struct _single_list
 }single_list;
 single_list *slist_create(void);
 void slist_destroy(single_list *list, destroy_func fn);
-int insert_head(single_list *list, void *data);
-int insert_tail(single_list *list, void *data);
-void *head_pop(single_list *list);
-void *head_get(single_list *list);
-void *tail_get(single_list *list);
-void *tail_pop(single_list *list);
-void *count_get(single_list *list);
+int slist_insert_head(single_list *list, void *data);
+int slist_insert_tail(single_list *list, void *data);
+void *slist_head_pop(single_list *list);
+void *slist_head_get(single_list *list);
+void *slist_tail_get(single_list *list);
+void *slist_tail_pop(single_list *list);
+uint slist_count_get(single_list *list);
+
+void slist_enumbegin(single_list *list);
+void *slist_enumnext(single_list *list);
 #endif
