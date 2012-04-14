@@ -39,7 +39,9 @@ int slist_insertsort(single_list *list, compare_func fn)
 				p_curnode = p_node->next;
 				if(p_prenode != NULL)
 				{
-					
+					p_node->p_next = p_node->p_next->p_next;
+					p_prenode->p_next = p_curnode;
+					p_curnode->p_next = tmp;				
 				}
 				else
 				{
