@@ -193,3 +193,18 @@ int bitree_merge(bitree_t *merge, bitree_t *right, bitree_t *left, const void *d
 
     return 0;
 }
+
+int bitree_preorder(const bitree_t *tree, list_t *list)
+{
+    return 1;
+}
+
+int bitree_inorder(const bitree_t *tree, list_t *list)
+{
+    return 1;
+}
+
+int bitree_postorder(const bitree_t *tree, list_t *list)
+{
+    return 1;
+}

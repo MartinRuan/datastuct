@@ -28,6 +28,9 @@ int bitree_ins_right(bitree_t *tree, bitree_node_t *node, void *data);
 int bitree_merge(bitree_t *merge, bitree_node_t *right, const void *data);
 void bitree_rem_left(bitree_t *tree, bitree_node_t *node);
 void bitree_rem_right(bitree_t *tree, bitree_node_t *node);
+int bitree_preorder(const bitree_t *tree, list_t *list);
+int bitree_inorder(const bitree_t *tree, list_t *list);
+int bitree_postorder(const bitree_t *tree, list_t *list);
 
 #endif
 
