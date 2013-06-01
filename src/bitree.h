@@ -7,6 +7,7 @@
 #define BITREE_ROOT(tree)   ((tree)->root)
 #define BITREE_IS_LEFT(node) ((node)->left == NULL && (node)->right == NULL)
 #define BITREE_IS_EOB(node) ((node) == NULL)
+#define BITREE_DATA(node)   ((node)->data)
 
 typedef struct bitree_node_s {
     void *data;
