@@ -1,6 +1,8 @@
 #ifndef __RBTREE_H__
 #define __RBTREE_H__
 
+#include "except.h"
+
 template <typename T>
 class RedBlackTree;
 
@@ -15,9 +17,16 @@ public:
     typedef RedBlackNode<T> Node;
     RedBlackTree(const T &neg_inf);
     ~RedBlackTree();
-private:
+    void Insert(const T &x);
+public:
+//private:
     Node *header_;
     Node *null_node_;
+
+    Node *current_;
+    Node *parent_;
+    Node *grand_;
+    Node *great_;
 };
 
 template <typename T>
@@ -30,7 +39,8 @@ class RedBlackNode
     {
 
     }
-private:
+public:
+//private:
     T element_;
     RedBlackNode *left_;
     RedBlackNode *right_;
@@ -51,6 +61,33 @@ RedBlackTree<T>::~RedBlackTree()
 {
     delete null_node_;
     delete header_;
+}
+
+template <typename T>
+void RedBlackTree < T >::Insert(const T &x)
+{
+    current_ = parent_ = grand_ = header_;
+    null_node_->element_ = x;
+
+    while (current_->element_ !=x) {
+        great_ = grand_;
+        grand_ = parent_;
+        parent_ = current_;
+
+        current_= x < current_->element_ ? current_->left_ : current_->right_;
+    }
+
+    if (current_ != null_node_) {
+        throw DuplicateItemException();
+    }
+
+    current_ = new Node(x, null_node_, null_node_);
+    if (x < parent_->element_) {
+        parent_->left_ = current_;    
+    } else {
+        parent_->right_ = current_;
+    }
+    
 }
 #endif
 
